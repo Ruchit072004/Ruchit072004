@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @Ruchit072004
-- 👀 I’m interested in wed development
+- 👀 I’m interested in web development
 - 🌱 I’m currently learning apna collage course
 - 💞️ I’m looking to collaborate on ...
 - 📫 How to reach me ...
