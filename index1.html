@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crop Disease Scanner</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f7f5;
+        padding: 10px;
+        margin: 0;
+    }
+
+    header {
+        text-align: center;
+        padding: 15px;
+        font-size: 22px;
+        font-weight: bold;
+        background: #2e7d32;
+        color: white;
+        border-radius: 10px;
+    }
+
+    .container {
+        max-width: 480px;
+        margin: auto;
+        margin-top: 15px;
+    }
+
+    video, canvas, img {
+        width: 100%;
+        border-radius: 12px;
+        margin-top: 15px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 14px;
+        background: #2e7d32;
+        color: white;
+        border: none;
+        font-size: 18px;
+        border-radius: 10px;
+        margin-top: 12px;
+    }
+
+    .btn:active {
+        background: #205723;
+    }
+
+    .result-box {
+        background: #e8f5e9;
+        padding: 15px;
+        margin-top: 20px;
+        border-radius: 10px;
+        border-left: 6px solid #2e7d32;
+    }
+
+    h3 {
+        margin-top: 10px;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>🌿 Crop Disease Scanner</header>
+
+<div class="container">
+
+    <button class="btn" onclick="startCamera()">📷 Open Leaf Scanner</button>
+
+    <video id="camera" autoplay playsinline style="display:none;"></video>
+    <canvas id="snapshot" style="display:none;"></canvas>
+
+    <button class="btn" id="captureBtn" onclick="captureImage()" style="display:none;">
+        📸 Capture Leaf Image
+    </button>
+
+    <img id="preview" style="display:none;" />
+
+    <div id="result" class="result-box" style="display:none;"></div>
+
+</div>
+
+
+<script>
+// ------------------------------
+// Start Camera
+// ------------------------------
+async function startCamera() {
+    const video = document.getElementById("camera");
+    video.style.display = "block";
+    document.getElementById("captureBtn").style.display = "block";
+
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: "environment" }
+        });
+        video.srcObject = stream;
+    } catch (err) {
+        alert("Camera access denied or not supported.");
+    }
+}
+
+
+// ------------------------------
+// Capture Photo
+// ------------------------------
+function captureImage() {
+    const video = document.getElementById("camera");
+    const canvas = document.getElementById("snapshot");
+    const preview = document.getElementById("preview");
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(video, 0, 0);
+
+    const imageData = canvas.toDataURL("image/png");
+    preview.src = imageData;
+
+    preview.style.display = "block";
+
+    detectDisease();
+}
+
+
+// ------------------------------
+// Dummy Disease Detection Logic
+// Replace with ML later
+// ------------------------------
+function detectDisease() {
+    const diseases = ["Leaf Blight", "Rice Blast", "Healthy Leaf"];
+    const random = Math.floor(Math.random() * diseases.length);
+    const detected = diseases[random];
+
+    const managementGuide = {
+        "Leaf Blight": [
+            "Apply copper fungicide.",
+            "Remove infected leaves.",
+            "Improve field drainage."
+        ],
+        "Rice Blast": [
+            "Use resistant varieties.",
+            "Apply tricyclazole spray.",
+            "Avoid excess nitrogen."
+        ],
+        "Healthy Leaf": [
+            "No disease detected.",
+            "Maintain regular monitoring."
+        ]
+    };
+
+    let resultBox = document.getElementById("result");
+    resultBox.style.display = "block";
+    resultBox.innerHTML = `
+        <h3>🌱 Disease Identified: <b>${detected}</b></h3>
+        <h4>Management Recommendations:</h4>
+        <ul>
+            ${managementGuide[detected].map(step => `<li>${step}</li>`).join("")}
+        </ul>
+    `;
+}
+</script>
+
+</body>
+</html>

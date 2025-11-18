@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crop Disease Management</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f4f7f5;
+    }
+    header {
+        background: #2e7d32;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+    }
+    .container {
+        padding: 15px;
+        max-width: 500px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        margin-bottom: 18px;
+    }
+    label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 6px;
+    }
+    select, input {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        margin-top: 4px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+    button {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        background: #2e7d32;
+        color: white;
+        font-size: 18px;
+        border-radius: 10px;
+        margin-top: 12px;
+    }
+    button:hover {
+        background: #256527;
+    }
+    .result-card {
+        padding: 14px;
+        background: #e8f5e9;
+        border-left: 6px solid #2e7d32;
+        border-radius: 10px;
+    }
+    .footer {
+        text-align: center;
+        padding: 20px;
+        color: #666;
+    }
+</style>
+</head>
+
+<body>
+
+<header>🌾 Crop Disease Management System</header>
+
+<div class="container">
+
+    <!-- Form Card -->
+    <div class="card">
+        <label>Select Crop</label>
+        <select id="crop">
+            <option value="">-- choose crop --</option>
+            <option value="rice">Rice</option>
+            <option value="tomato">Tomato</option>
+            <option value="potato">Potato</option>
+        </select>
+
+        <label>Enter Symptom</label>
+        <input id="symptom" type="text" placeholder="e.g., yellow leaves">
+
+        <button onclick="findDisease()">Identify Disease</button>
+    </div>
+
+    <!-- Result Area -->
+    <div id="result"></div>
+
+</div>
+
+<div class="footer">Kindly prefer this mobile app for the particular disease of section.</div>
+
+
+<script>
+// ===============================
+// CROP DATABASE
+// ===============================
+const DISEASE_DB = {
+    rice: {
+        "leaf blight": {
+            symptoms: ["yellow leaves", "brown tips", "wilting"],
+            management: [
+                "Use resistant rice varieties.",
+                "Apply copper-based fungicides.",
+                "Avoid standing water.",
+                "Remove infected plants."
+            ]
+        },
+        "blast": {
+            symptoms: ["diamond-shaped lesions", "gray centers"],
+            management: [
+                "Use blast-resistant seeds.",
+                "Apply tricyclazole.",
+                "Maintain spacing.",
+                "Avoid excess nitrogen."
+            ]
+        }
+    },
+
+    tomato: {
+        "early blight": {
+            symptoms: ["dark spots", "yellow leaves", "concentric rings"],
+            management: [
+                "Apply chlorothalonil.",
+                "Rotate crops.",
+                "Avoid watering leaves."
+            ]
+        },
+        "late blight": {
+            symptoms: ["water-soaked spots", "white mildew"],
+            management: [
+                "Use certified seeds.",
+                "Apply mancozeb.",
+                "Destroy infected plants."
+            ]
+        }
+    },
+
+    potato: {
+        "late blight": {
+            symptoms: ["dark lesions", "white fungus", "leaf decay"],
+            management: [
+                "Use resistant varieties.",
+                "Apply copper fungicide.",
+                "Improve field drainage."
+            ]
+        }
+    }
+};
+
+
+// ===============================
+// Disease Matching Function
+// ===============================
+function findDisease() {
+    const crop = document.getElementById("crop").value.toLowerCase();
+    const symptom = document.getElementById("symptom").value.toLowerCase();
+    const resultDiv = document.getElementById("result");
+
+    if (!crop || !symptom) {
+        resultDiv.innerHTML = `<div class="result-card">⚠ Please enter both crop and symptom.</div>`;
+        return;
+    }
+
+    if (!DISEASE_DB[crop]) {
+        resultDiv.innerHTML = `<div class="result-card">❌ No data available for this crop.</div>`;
+        return;
+    }
+
+    let found = false;
+
+    for (let disease in DISEASE_DB[crop]) {
+        let info = DISEASE_DB[crop][disease];
+
+        if (info.symptoms.some(s => s.includes(symptom))) {
+            found = true;
+
+            resultDiv.innerHTML = `
+                <div class="card result-card">
+                    <h3>🌱 Disease Identified: <b>${disease.toUpperCase()}</b></h3>
+                    <h4>Management Recommendations:</h4>
+                    <ul>
+                        ${info.management.map(step => `<li>${step}</li>`).join("")}
+                    </ul>
+                </div>
+            `;
+            break;
+        }
+    }
+
+    if (!found) {
+        resultDiv.innerHTML = `<div class="result-card">❌ No matching disease found for the given symptom.</div>`;
+    }
+}
+</script>
+
+</body>
+</html>
