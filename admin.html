@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Flipr Digital</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-cogs"></i> Admin Panel</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active" data-section="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#" data-section="projects"><i class="fas fa-project-diagram"></i> Manage Projects</a></li>
+                <li><a href="#" data-section="clients"><i class="fas fa-users"></i> Manage Clients</a></li>
+                <li><a href="#" data-section="contacts"><i class="fas fa-envelope"></i> Contact Forms</a></li>
+                <li><a href="#" data-section="newsletter"><i class="fas fa-newspaper"></i> Newsletter Subscribers</a></li>
+                <li><a href="index.html" class="back-to-site"><i class="fas fa-globe"></i> Back to Site</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="admin-header">
+                <h1>Admin Dashboard</h1>
+                <div class="admin-actions">
+                    <button id="logout-btn" class="btn-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <section id="dashboard" class="content-section active">
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #4a6fa5;">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="projects-count">0</h3>
+                            <p>Total Projects</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #2ecc71;">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="clients-count">0</h3>
+                            <p>Happy Clients</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #e74c3c;">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="contacts-count">0</h3>
+                            <p>Contact Forms</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #f39c12;">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="subscribers-count">0</h3>
+                            <p>Newsletter Subscribers</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recent-activity">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list" id="recent-activity">
+                        <!-- Activity items will be loaded here -->
+                        <p class="loading">Loading recent activity...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Manage Projects Section -->
+            <section id="projects" class="content-section">
+                <div class="section-header">
+                    <h2>Manage Projects</h2>
+                    <button class="btn-add" id="add-project-btn"><i class="fas fa-plus"></i> Add New Project</button>
+                </div>
+                
+                <!-- Add Project Form (Hidden by default) -->
+                <div class="add-form-container" id="add-project-form">
+                    <h3>Add New Project</h3>
+                    <form id="project-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="project-name">Project Name *</label>
+                                <input type="text" id="project-name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="project-category">Category</label>
+                                <input type="text" id="project-category" name="category" placeholder="e.g., Consultation, Design">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="project-description">Description *</label>
+                            <textarea id="project-description" name="description" rows="4" required></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="project-image">Image URL *</label>
+                                <input type="text" id="project-image" name="image" placeholder="Enter image URL" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="project-location">Location</label>
+                                <input type="text" id="project-location" name="location" placeholder="e.g., Remote, New York">
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn-save">Save Project</button>
+                            <button type="button" class="btn-cancel" id="cancel-project-btn">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Projects List -->
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projects-table-body">
+                            <!-- Projects will be loaded here -->
+                            <tr><td colspan="5" class="loading">Loading projects...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Manage Clients Section -->
+            <section id="clients" class="content-section">
+                <div class="section-header">
+                    <h2>Manage Clients</h2>
+                    <button class="btn-add" id="add-client-btn"><i class="fas fa-plus"></i> Add New Client</button>
+                </div>
+                
+                <!-- Add Client Form (Hidden by default) -->
+                <div class="add-form-container" id="add-client-form">
+                    <h3>Add New Client</h3>
+                    <form id="client-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="client-name">Client Name *</label>
+                                <input type="text" id="client-name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="client-designation">Designation *</label>
+                                <input type="text" id="client-designation" name="designation" placeholder="e.g., CEO, Designer" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="client-description">Testimonial *</label>
+                            <textarea id="client-description" name="description" rows="4" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="client-image">Image URL *</label>
+                            <input type="text" id="client-image" name="image" placeholder="Enter image URL" required>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn-save">Save Client</button>
+                            <button type="button" class="btn-cancel" id="cancel-client-btn">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Clients List -->
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Designation</th>
+                                <th>Testimonial</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clients-table-body">
+                            <!-- Clients will be loaded here -->
+                            <tr><td colspan="5" class="loading">Loading clients...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Contact Forms Section -->
+            <section id="contacts" class="content-section">
+                <div class="section-header">
+                    <h2>Contact Form Submissions</h2>
+                </div>
+                
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
+                                <th>City</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="contacts-table-body">
+                            <!-- Contact form submissions will be loaded here -->
+                            <tr><td colspan="5" class="loading">Loading contact submissions...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Newsletter Subscribers Section -->
+            <section id="newsletter" class="content-section">
+                <div class="section-header">
+                    <h2>Newsletter Subscribers</h2>
+                </div>
+                
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Email Address</th>
+                                <th>Subscription Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="subscribers-table-body">
+                            <!-- Subscribers will be loaded here -->
+                            <tr><td colspan="2" class="loading">Loading subscribers...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,208 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crop Disease Management</title>
-
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        background: #f4f7f5;
-    }
-    header {
-        background: #2e7d32;
-        color: white;
-        padding: 20px;
-        text-align: center;
-        font-size: 22px;
-        font-weight: bold;
-    }
-    .container {
-        padding: 15px;
-        max-width: 500px;
-        margin: auto;
-    }
-    .card {
-        background: white;
-        padding: 16px;
-        border-radius: 12px;
-        box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-        margin-bottom: 18px;
-    }
-    label {
-        font-weight: bold;
-        display: block;
-        margin-bottom: 6px;
-    }
-    select, input {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
-        margin-top: 4px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-    }
-    button {
-        width: 100%;
-        padding: 14px;
-        border: none;
-        background: #2e7d32;
-        color: white;
-        font-size: 18px;
-        border-radius: 10px;
-        margin-top: 12px;
-    }
-    button:hover {
-        background: #256527;
-    }
-    .result-card {
-        padding: 14px;
-        background: #e8f5e9;
-        border-left: 6px solid #2e7d32;
-        border-radius: 10px;
-    }
-    .footer {
-        text-align: center;
-        padding: 20px;
-        color: #666;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipr - Digital Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Flipr<span>Digital</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#clients">Clients</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="admin.html" class="admin-link">Admin</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
 
-<header>🌾 Crop Disease Management System</header>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Digital Solutions for Modern Businesses</h1>
+                <p>We provide cutting-edge digital solutions including consultation, design, and marketing services to help your business grow.</p>
+                <a href="#contact" class="btn">Get Free Consultation</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Digital Solutions">
+            </div>
+        </div>
+    </section>
 
-<div class="container">
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <h2 class="section-title">Our Projects</h2>
+            <p class="section-subtitle">Explore our recent work and successful projects</p>
+            <div class="projects-container" id="projects-container">
+                  
+                </div>
+        </div>
+    </section>
 
-    <!-- Form Card -->
-    <div class="card">
-        <label>Select Crop</label>
-        <select id="crop">
-            <option value="">-- choose crop --</option>
-            <option value="rice">Rice</option>
-            <option value="tomato">Tomato</option>
-            <option value="potato">Potato</option>
-        </select>
-
-        <label>Enter Symptom</label>
-        <input id="symptom" type="text" placeholder="e.g., yellow leaves">
-
-        <button onclick="findDisease()">Identify Disease</button>
+    <!-- Happy Clients Section -->
+    <section class="clients-section" id="clients">
+        <div class="container">
+            <h2 class="section-title">Happy Clients</h2>
+            <p class="section-subtitle">What our clients say about us</p>
+            <div class="clients-container" id="clients-container">
+                <!-- Clients will be loaded from backend -->
+             <!-- Add this directly to your index.html if you want static content -->
+<section class="clients-section" id="clients">
+    <div class="container">
+          
+        <div class="clients-container">
+            <!-- Client 1 -->
+            <div class="client-card">
+                <div class="client-header">
+                    <div class="client-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rowhan Smith">
+                    </div>
+                    <div class="client-info">
+                        <h4>Rowhan Smith</h4>
+                        <div class="client-designation">CEO, Feverbearer</div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="client-description">"Working with Flipr Digital was a game-changer for our business. Their team delivered exceptional results, increasing our online sales by 45% in just three months."</p>
+            </div>
+            
+            <!-- Client 2 -->
+            <div class="client-card">
+                <div class="client-header">
+                    <div class="client-image">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Shijpa Kayak">
+                    </div>
+                    <div class="client-info">
+                        <h4>Shijpa Kayak</h4>
+                        <div class="client-designation">Brand Designer</div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="client-description">"The design team at Flipr Digital is incredibly talented. They understood our vision perfectly and transformed our brand identity with stunning visuals."</p>
+            </div>
+            
+            <!-- Client 3 -->
+            <div class="client-card">
+                <div class="client-header">
+                    <div class="client-image">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="John Lepore">
+                    </div>
+                    <div class="client-info">
+                        <h4>John Lepore</h4>
+                        <div class="client-designation">CEO, TechSolutions</div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="client-description">"Their marketing strategies increased our conversion rate by 40% in just three months. The data-driven approach made a significant impact on our bottom line."</p>
+            </div>
+            
+            <!-- Client 4 -->
+            <div class="client-card">
+                <div class="client-header">
+                    <div class="client-image">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Marty Freeman">
+                    </div>
+                    <div class="client-info">
+                        <h4>Marty Freeman</h4>
+                        <div class="client-designation">Managing Director at MaxiCorp</div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="client-description">"Flipr Digital transformed our digital presence completely. Their consultation services helped us streamline operations and improve efficiency across all departments."</p>
+            </div>
+            
+            <!-- Client 5 -->
+            <div class="client-card">
+                <div class="client-header">
+                    <div class="client-image">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lucy Shen">
+                    </div>
+                    <div class="client-info">
+                        <h4>Lucy Shen</h4>
+                        <div class="client-designation">Product Manager at Alkaba</div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="client-description">"As a Product Manager, I appreciate how Flipr Digital focuses on user experience. Their team delivered an intuitive interface that reduced our customer support tickets by 60%."</p>
+            </div>
+            
+            <!-- Client 6 -->
+            <div class="client-card">
+                <div class="client-header">
+                    <div class="client-image">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="David Rodriguez">
+                    </div>
+                    <div class="client-info">
+                        <h4>David Rodriguez</h4>
+                        <div class="client-designation">CTO, InnovateTech</div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="client-description">"The technical expertise at Flipr Digital is outstanding. They implemented complex features with precision and maintained excellent code quality throughout the project."</p>
+            </div>
+        </div>
     </div>
+</section>
+        </div>
+    </div>
+</section>
+            </div>
+        </div>
+    </section>
 
-    <!-- Result Area -->
-    <div id="result"></div>
+    <!-- Contact Form Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get a Free Consultation</h2>
+            <p class="section-subtitle">Fill out the form below and we'll get back to you within 24 hours</p>
+            
+            <form id="contact-form" class="contact-form">
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mobile">Mobile Number</label>
+                    <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" placeholder="Enter your city" required>
+                </div>
+                
+                <button type="submit" class="btn submit-btn">Get Quick Quote</button>
+                <div id="form-message" class="form-message"></div>
+            </form>
+        </div>
+    </section>
 
-</div>
-
-<div class="footer">Kindly prefer this mobile app for the particular disease of section.</div>
-
-
-<script>
-// ===============================
-// CROP DATABASE
-// ===============================
-const DISEASE_DB = {
-    rice: {
-        "leaf blight": {
-            symptoms: ["yellow leaves", "brown tips", "wilting"],
-            management: [
-                "Use resistant rice varieties.",
-                "Apply copper-based fungicides.",
-                "Avoid standing water.",
-                "Remove infected plants."
-            ]
-        },
-        "blast": {
-            symptoms: ["diamond-shaped lesions", "gray centers"],
-            management: [
-                "Use blast-resistant seeds.",
-                "Apply tricyclazole.",
-                "Maintain spacing.",
-                "Avoid excess nitrogen."
-            ]
-        }
-    },
-
-    tomato: {
-        "early blight": {
-            symptoms: ["dark spots", "yellow leaves", "concentric rings"],
-            management: [
-                "Apply chlorothalonil.",
-                "Rotate crops.",
-                "Avoid watering leaves."
-            ]
-        },
-        "late blight": {
-            symptoms: ["water-soaked spots", "white mildew"],
-            management: [
-                "Use certified seeds.",
-                "Apply mancozeb.",
-                "Destroy infected plants."
-            ]
-        }
-    },
-
-    potato: {
-        "late blight": {
-            symptoms: ["dark lesions", "white fungus", "leaf decay"],
-            management: [
-                "Use resistant varieties.",
-                "Apply copper fungicide.",
-                "Improve field drainage."
-            ]
-        }
-    }
-};
-
-
-// ===============================
-// Disease Matching Function
-// ===============================
-function findDisease() {
-    const crop = document.getElementById("crop").value.toLowerCase();
-    const symptom = document.getElementById("symptom").value.toLowerCase();
-    const resultDiv = document.getElementById("result");
-
-    if (!crop || !symptom) {
-        resultDiv.innerHTML = `<div class="result-card">⚠ Please enter both crop and symptom.</div>`;
-        return;
-    }
-
-    if (!DISEASE_DB[crop]) {
-        resultDiv.innerHTML = `<div class="result-card">❌ No data available for this crop.</div>`;
-        return;
-    }
-
-    let found = false;
-
-    for (let disease in DISEASE_DB[crop]) {
-        let info = DISEASE_DB[crop][disease];
-
-        if (info.symptoms.some(s => s.includes(symptom))) {
-            found = true;
-
-            resultDiv.innerHTML = `
-                <div class="card result-card">
-                    <h3>🌱 Disease Identified: <b>${disease.toUpperCase()}</b></h3>
-                    <h4>Management Recommendations:</h4>
+    <!-- Newsletter Section -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Flipr<span>Digital</span></h3>
+                    <p>Providing digital solutions since 2018. We specialize in consultation, design, and marketing services.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
                     <ul>
-                        ${info.management.map(step => `<li>${step}</li>`).join("")}
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#clients">Clients</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-            `;
-            break;
-        }
-    }
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Consultation</a></li>
+                        <li><a href="#">Design</a></li>
+                        <li><a href="#">Marketing</a></li>
+                        <li><a href="#">Development</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section newsletter">
+                    <h4>Subscribe Us</h4>
+                    <p>Subscribe to our newsletter for the latest updates and offers</p>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <input type="email" id="newsletter-email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn-newsletter">Subscribe</button>
+                    </form>
+                    <div id="newsletter-message" class="newsletter-message"></div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                 
+            </div>
+        </div>
+    </footer>
 
-    if (!found) {
-        resultDiv.innerHTML = `<div class="result-card">❌ No matching disease found for the given symptom.</div>`;
-    }
-}
-</script>
+    <script src="/jsmain.js"></script>
+    <script src="project.js"></script>
+    <script src="server.js"></script>
+    
 
 </body>
 </html>
